@@ -1,0 +1,42 @@
+namespace methodsDemo
+{
+    class program
+    {
+        static void Main(string[] args)
+        {
+            SayHi("Mjau");
+            ArrayNames();
+            ArrayNumbers();
+
+        }//call the method
+        
+        static void SayHi(string name) //rewrite one code, and reuse it continuely but slightly differently. 
+        {
+            Console.WriteLine("Hello " + name);
+        }
+
+        static void ArrayNumbers()//an array is a container that can hold a bunch of pieces of information
+        {
+            
+            //type of data, string int double boolean? 
+
+            int[] luckyNumbers = { 13, 7, 5, 302, 2, 42};
+            Console.WriteLine(luckyNumbers[5]);
+
+        }
+
+        static void ArrayNames()
+        {
+            string[] friends = new string[5];
+            friends[0] = "Petra";
+            friends[1] = "Mattias";
+            friends[2] = "Jenny";
+            friends[3] = "Sanna";
+            friends[4] = "Vevzi";
+
+            Console.WriteLine(friends[3]);
+        }
+
+    }
+
+}
