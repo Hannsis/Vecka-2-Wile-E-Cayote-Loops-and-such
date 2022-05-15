@@ -1,0 +1,20 @@
+bool rain = true;
+bool willRain = false;
+
+
+
+if (rain)
+
+{
+    Console.WriteLine("Stay Inside");
+}
+
+else if (willRain)
+{
+    Console.WriteLine("Bring an umbrella");
+
+}
+else if (!rain)
+{
+    Console.WriteLine("Go for a walk");
+}
