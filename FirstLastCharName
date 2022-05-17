@@ -1,0 +1,20 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Get values from this string.
+        Console.WriteLine("Type your name: ");
+        string name = Console.ReadLine();
+        string value = name;
+        char first = value[0];
+        char second = value[1];
+        char last = value[value.Length - 1]; //hur blir sista -1?
+
+        // Write chars.
+        Console.WriteLine("FIRST: {0}", first);
+        Console.WriteLine("SECOND: {0}", second);
+        Console.WriteLine("LAST: {0}", last);
+    }
+}
