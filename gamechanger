@@ -1,0 +1,47 @@
+using System;
+
+namespace GameGenerator
+{
+    class Program
+    {
+
+        public void Main(string[] args)
+        {
+            System.Random LuckyNumber = new System.Random();
+                                  
+            int max;
+            int guess = 0;
+            bool playAgain = false;
+            int luckyNumber;
+
+            
+            //int guess = Convert.ToInt32(Console.ReadLine());
+            //System.Console.WriteLine(LuckyNumber.Next(1, 100));
+
+            Console.WriteLine("Gissa talet! \nDu ska nu välja ett tal mellan ett och hundra!\nDu får tio chanser på dig.");
+            Console.Write("Type in your lucky number: ");
+
+
+            while (playAgain == true)
+            {                            
+                guess = 0;
+               
+                guess++;
+
+                while (guess != LuckyNumber)
+                {
+
+                    Console.WriteLine("Sorry, det var inte så tursamt, fel siffra. \nGissa igen!");
+                    if (guess )
+                    {
+
+                    }
+                    guess = Convert.ToInt32(Console.ReadLine());
+
+                }
+
+            }
+            Console.WriteLine(LuckyNumber + " is your lucky number! You win!");
+            
+
+
