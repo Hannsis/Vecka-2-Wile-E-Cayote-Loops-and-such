@@ -14,44 +14,51 @@ namespace GameGenerator
             int max = 100;// en lek mellan 1 - 100
             int min = 1;
             int randomNum = Random.Next(min, max + 1);//plus ett pga annars blir det 99
-            string responses;
-            int tries;
+            string responses;//den skippar 
+            int tries = 1;
+
 
             Console.WriteLine("Roses are red and voilets are blue, here is a game made just for you.");
             Console.WriteLine("Guess the correct number and you will win, ");
-            Console.WriteLine("Guess wrong ten times, and you fail. ");
+            Console.WriteLine("Guess wrong ten times, you won't get a new chance to begin, ");
+            Console.WriteLine("because you failed. ");
+
 
             while (incorrectGuess) // keep playing
             {
-                Console.Write("Guess a number: ");
-                int guess = Convert.ToInt32(Console.ReadLine());//det spelaren gissar hamnar inuti "guess" varible
-                tries = 0;// hur gör jag så den skriver ut vilken guess jag är på?
+                Console.WriteLine("Guess a number: ");
+                string guess = Console.ReadLine();
 
-                if (incorrectGuess)
+                
+                int num = 0;
+                bool wrongNumber = Int32.TryParse(guess, out num);//BroCode youtube - tryparse
+
+                if (wrongNumber)
                 {
-                    incorrectGuess = Int32.TryParse(guess, out guess);//fattar ej varför guess inte funkar, har declarat det där uppe någonstans och convert to int
-
-                    Console.WriteLine(guess);
+                    Console.WriteLine("You guessed " + num);
                 }
 
                 else
-
-                { Console.WriteLine("Incorrect Value, please try again."); }
-
-                if (guess < randomNum)
                 {
-                    Console.WriteLine(guess + " is too low");
+                    Console.WriteLine("Incorrect Value, please try again.");
+                   continue;//jens hjälpte mig
+                } 
+
+                if (num < randomNum)
+                {
+                    Console.WriteLine(num + " is too low");
+                    Console.WriteLine("you have tried " + tries + " times");
                 }
-                
-                else if (guess > randomNum)
-                {
-                    Console.WriteLine(guess + " is too high");
-                }
-                
-                else
-                {
-                    tries++;
 
+                else if (num > randomNum)//exception handling GiraffeAcademy youtube, tutorial 24
+                {
+                    Console.WriteLine(num + " is too high");
+                    Console.WriteLine("you have tried " + tries + " times");
+                }
+
+                if (num == randomNum)
+
+                {
 
                     Console.WriteLine("YOU WIN");
                     //  Console.WriteLine("You've guessed " + tries + " times");
@@ -60,23 +67,32 @@ namespace GameGenerator
                     responses = Console.ReadLine();
                     responses = responses.ToUpper();
 
-                    if (responses == ("Y"))
+                    if (responses == ("N"))
                     {
-                        incorrectGuess = true;
+                        incorrectGuess = false;
+
+                    }
+                    else
+                    {
+                        //randomNum
+
                     }
 
+                } 
+                
+                tries++;
+                if (tries == 11)
+                { 
+                   Console.WriteLine("I'm sorry to say, you will have to pay. You have failed the mission, and Harley Quinn now has my permission.");
+                   Console.WriteLine("To end you."); 
+                   
+                   break;
+                    
+
                 }
+
             }
         }
     }
 }
-/*
-  //tryParse
-incorrectGuess = Int32.TryParse(guess, out guess);
-if (incorrectGuess)
-{ Console.WriteLine(guess); }
-else
-{ Console.WriteLine("Incorrect Value, please try again."); }
-
-
- */
+    
