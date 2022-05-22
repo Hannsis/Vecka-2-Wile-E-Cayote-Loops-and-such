@@ -10,26 +10,26 @@ namespace GameGenerator
 
 
             Random Random = new Random(); //in charge of generating random numbers 
-            bool correctGuess = true; //set to false, alltså är det felgissning.
+            bool incorrectGuess = true; //set to true, alltså är det felgissning.
             int max = 100;// en lek mellan 1 - 100
             int min = 1;
             int randomNum = Random.Next(min, max + 1);//plus ett pga annars blir det 99
             string responses;
+            int tries;
 
             Console.WriteLine("Roses are red and voilets are blue, here is a game made just for you.");
             Console.WriteLine("Guess the correct number and you will win, ");
             Console.WriteLine("Guess wrong ten times, and you fail. ");
 
-            while (correctGuess) //is false, keep playing
+            while (incorrectGuess) // keep playing
             {
-                Console.Write("Guess number: ");
+                Console.Write("Guess a number: ");
                 int guess = Convert.ToInt32(Console.ReadLine());//det spelaren gissar hamnar inuti "guess" varible
+                tries = 0;// hur gör jag så den skriver ut vilken guess jag är på?
 
-                //  tries = Console.ReadLine();// hur gör jag så den skriver ut vilken guess jag är på?
-
-                if (correctGuess)
+                if (incorrectGuess)
                 {
-                    correctGuess = Int32.TryParse(guess, out guess);//fattar ej varför guess inte funkar, har declarat det där uppe någonstans och convert to int
+                    incorrectGuess = Int32.TryParse(guess, out guess);//fattar ej varför guess inte funkar, har declarat det där uppe någonstans och convert to int
 
                     Console.WriteLine(guess);
                 }
@@ -50,11 +50,11 @@ namespace GameGenerator
                 
                 else
                 {
-                    guess++;
+                    tries++;
 
 
                     Console.WriteLine("YOU WIN");
-                    //  Console.WriteLine("You've guessed "* + tries + " times"); //Hur får man in tries?
+                    //  Console.WriteLine("You've guessed " + tries + " times");
                     Console.WriteLine("Do you wish to play again? Y/N");
 
                     responses = Console.ReadLine();
@@ -62,7 +62,7 @@ namespace GameGenerator
 
                     if (responses == ("Y"))
                     {
-                        correctGuess = true;
+                        incorrectGuess = true;
                     }
 
                 }
@@ -70,3 +70,13 @@ namespace GameGenerator
         }
     }
 }
+/*
+  //tryParse
+incorrectGuess = Int32.TryParse(guess, out guess);
+if (incorrectGuess)
+{ Console.WriteLine(guess); }
+else
+{ Console.WriteLine("Incorrect Value, please try again."); }
+
+
+ */
